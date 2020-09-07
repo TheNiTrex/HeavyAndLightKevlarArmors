@@ -43,7 +43,6 @@ static function X2AbilityTemplate MediumKevlarArmorStats() {
 	Trigger = new class'X2AbilityTrigger_UnitPostBeginPlay';
 	Template.AbilityTriggers.AddItem(Trigger);
 
-
 	PersistentStatChangeEffect = new class'X2Effect_PersistentStatChange';
 	PersistentStatChangeEffect.BuildPersistentEffect(1, true, false, false);
 	PersistentStatChangeEffect.AddPersistentStatChange(eStat_HP, default.MEDIUM_KEVLAR_HEALTH_BONUS);
@@ -76,7 +75,6 @@ static function X2AbilityTemplate HeavyKevlarArmorStats() {
 
 	Trigger = new class'X2AbilityTrigger_UnitPostBeginPlay';
 	Template.AbilityTriggers.AddItem(Trigger);
-
 
 	PersistentStatChangeEffect = new class'X2Effect_PersistentStatChange';
 	PersistentStatChangeEffect.BuildPersistentEffect(1, true, false, false);
@@ -112,7 +110,6 @@ static function X2AbilityTemplate LightKevlarArmorStats() {
 
 	Trigger = new class'X2AbilityTrigger_UnitPostBeginPlay';
 	Template.AbilityTriggers.AddItem(Trigger);
-
 
 	PersistentStatChangeEffect = new class'X2Effect_PersistentStatChange';
 	PersistentStatChangeEffect.BuildPersistentEffect(1, true, false, false);

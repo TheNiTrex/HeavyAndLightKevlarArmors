@@ -3,7 +3,9 @@
   <PropertyGroup>
     <Guid>33a30578-442e-4071-88c4-3482399de928</Guid>
     <Name>Heavy And Light Kevlar Armors</Name>
-    <Description>Adds Heavy and Light variants of standard Kevlar Armor.</Description>
+    <Description>Adds Heavy and Light variants of standard Kevlar Armor.
+
+tags= war of the chosen, item, gameplay, armor</Description>
     <SteamPublishID>0</SteamPublishID>
     <AssemblyName>HeavyAndLightKevlarArmors</AssemblyName>
     <RootNamespace>HeavyAndLightKevlarArmors</RootNamespace>
