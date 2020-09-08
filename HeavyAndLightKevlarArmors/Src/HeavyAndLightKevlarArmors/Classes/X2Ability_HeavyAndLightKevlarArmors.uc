@@ -8,6 +8,7 @@ class X2Ability_HeavyAndLightKevlarArmors extends X2Ability
 	var config config(HeavyAndLightKevlarArmors) int HEAVY_KEVLAR_MOBILITY_MALUS;
 
 	var config config(HeavyAndLightKevlarArmors) int LIGHT_KEVLAR_MOBILITY_BONUS;
+	var config config(HeavyAndLightKevlarArmors) int LIGHT_KEVLAR_DODGE_BONUS;
 
 static function array<X2DataTemplate> CreateTemplates() {
 
@@ -114,6 +115,7 @@ static function X2AbilityTemplate LightKevlarArmorStats() {
 	PersistentStatChangeEffect = new class'X2Effect_PersistentStatChange';
 	PersistentStatChangeEffect.BuildPersistentEffect(1, true, false, false);
 	PersistentStatChangeEffect.AddPersistentStatChange(eStat_Mobility, default.LIGHT_KEVLAR_MOBILITY_BONUS);
+	PersistentStatChangeEffect.AddPersistentStatChange(eStat_Dodge, default.LIGHT_KEVLAR_DODGE_BONUS);
 	Template.AddTargetEffect(PersistentStatChangeEffect);
 
 	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;

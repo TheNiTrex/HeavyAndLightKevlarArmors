@@ -11,7 +11,11 @@
 class X2DownloadableContentInfo_HeavyAndLightKevlarArmors extends X2DownloadableContentInfo;
 
 	var config(HeavyAndLightKevlarArmors) int MEDIUM_KEVLAR_HEALTH_BONUS;
+
+	var config(HeavyAndLightKevlarArmors) bool bHeavyKevlarArmorUtilitySlot;
+
 	var config(HeavyAndLightKevlarArmors) int LIGHT_KEVLAR_MOBILITY_BONUS;
+	var config(HeavyAndLightKevlarArmors) int LIGHT_KEVLAR_DODGE_BONUS;
 
 /// <summary>
 /// This method is run if the player loads a saved game that was created prior to this DLC / Mod being installed, and allows the 
@@ -19,8 +23,6 @@ class X2DownloadableContentInfo_HeavyAndLightKevlarArmors extends X2Downloadable
 /// create without the content installed. Subsequent saves will record that the content was installed.
 /// </summary>
 static event OnLoadedSavedGame() {
-
-	//`log("TEST - OLSG");
 
 	AddHeavyKevlarArmor();
 
@@ -31,7 +33,7 @@ static event OnLoadedSavedGame() {
 /// </summary>
 static event InstallNewCampaign(XComGameState StartState) {
 
-	//Not needed, Item Templates are added at campaign start if Template.StartingItem is set to True
+	// Not needed, Item Templates are added at campaign start if Template.StartingItem is set to True
 
 }
 
@@ -58,34 +60,41 @@ static function AddHeavyKevlarArmor() {
 
 	HeavyKevlarArmor = TemplateManager.FindItemTemplate('HeavyKevlarArmor');
 
-	if (HeavyKevlarArmor != none) { //Failsafe
+	if (HeavyKevlarArmor != none) { // Failsafe
 
 		NewItemState = HeavyKevlarArmor.CreateInstanceFromTemplate(NewGameState);
 		XComHQ.AddItemToHQInventory(NewItemState);
 		History.AddGameStateToHistory(NewGameState);
 
-	} else { //Should never trigger, but just good practice
+	} else { // Should never trigger, but just good practice
 	
 		History.CleanupPendingGameState(NewGameState);
 
 	} 
 }
 
-static function OnPostTemplatesCreated() { //Use OPTC to modify base-game Kevlar Armors
+static function OnPostTemplatesCreated() { // Use OPTC to modify base-game Kevlar Armors
 
 	local X2ItemTemplateManager TemplateManager;
 	local X2ArmorTemplate Template;
-
+	
 	TemplateManager = class'X2ItemTemplateManager'.static.GetItemTemplateManager();
 
 	Template = X2ArmorTemplate(TemplateManager.FindItemTemplate('KevlarArmor'));
-	Template.ArmorClass = 'medium'; //Reclassify Kevlar Armor as Medium Armor so it benefits from Breakthrough bonuses 
+	Template.ArmorClass = 'medium'; // Reclassify Kevlar Armor as Medium Armor so it benefits from Breakthrough bonuses 
 	Template.Abilities.AddItem('MediumKevlarArmorStats');
 	Template.SetUIStatMarkup(class'XLocalizedData'.default.HealthLabel, eStat_HP, class'X2Ability_HeavyAndLightKevlarArmors'.default.MEDIUM_KEVLAR_HEALTH_BONUS, true);
 
 	Template = X2ArmorTemplate(TemplateManager.FindItemTemplate('KevlarArmor_DLC_Day0'));
-	Template.ArmorClass = 'light'; //Reclassify Resistance Warrior Armor as Light Armor so it benefits from Breakthrough bonuses 
+	Template.ArmorClass = 'light'; // Reclassify Resistance Warrior Armor as Light Armor so it benefits from Breakthrough bonuses 
 	Template.Abilities.AddItem('LightKevlarArmorStats');
 	Template.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, class'X2Ability_HeavyAndLightKevlarArmors'.default.LIGHT_KEVLAR_MOBILITY_BONUS, true);
+	Template.SetUIStatMarkup(class'XLocalizedData'.default.DodgeLabel, eStat_Dodge, class'X2Ability_HeavyAndLightKevlarArmors'.default.LIGHT_KEVLAR_DODGE_BONUS, true);
 
+	if (default.bHeavyKevlarArmorUtilitySlot == true) { // Add Utility Slot to Heavy Kevlar Armor if .ini option is enabled
+
+		Template = X2ArmorTemplate(TemplateManager.FindItemTemplate('HeavyKevlarArmor'));
+		Template.bAddsUtilitySlot = true;
+
+	}
 }

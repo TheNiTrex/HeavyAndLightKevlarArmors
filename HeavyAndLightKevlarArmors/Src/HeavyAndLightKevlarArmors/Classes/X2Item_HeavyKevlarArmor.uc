@@ -1,12 +1,8 @@
 class X2Item_HeavyKevlarArmor extends X2Item config(HeavyAndLightKevlarArmors);
-
-	var config int MEDIUM_KEVLAR_HEALTH_BONUS;
 	
 	var config int HEAVY_KEVLAR_HEALTH_BONUS;
 	var config int HEAVY_KEVLAR_MITIGATION_BONUS;
 	var config int HEAVY_KEVLAR_MOBILITY_MALUS;
-
-	var config int LIGHT_KEVLAR_MOBILITY_BONUS;
 
 static function array<X2DataTemplate> CreateTemplates() {
 
@@ -24,6 +20,7 @@ static function X2DataTemplate CreateHeavyKevlarArmor() {
 
 	`CREATE_X2TEMPLATE(class'X2ArmorTemplate', Template, 'HeavyKevlarArmor');
 	Template.strImage = "img:///UILibrary_StrategyImages.X2InventoryIcons.Inv_Kevlar_Armor";
+	Template.bAddsUtilitySlot = false;
 	Template.StartingItem = true;
 	Template.CanBeBuilt = false;
 	Template.bInfiniteItem = true;
