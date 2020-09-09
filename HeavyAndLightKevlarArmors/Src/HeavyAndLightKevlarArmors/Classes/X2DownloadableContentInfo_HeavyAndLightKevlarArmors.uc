@@ -86,6 +86,7 @@ static function OnPostTemplatesCreated() { // Use OPTC to modify base-game Kevla
 	Template.SetUIStatMarkup(class'XLocalizedData'.default.HealthLabel, eStat_HP, class'X2Ability_HeavyAndLightKevlarArmors'.default.MEDIUM_KEVLAR_HEALTH_BONUS, true);
 
 	Template = X2ArmorTemplate(TemplateManager.FindItemTemplate('KevlarArmor_DLC_Day0'));
+	Template.strImage = "img:///UILibrary_HeavyAndLightKevlarArmors.LightArmor";
 	Template.ArmorClass = 'light'; // Reclassify Resistance Warrior Armor as Light Armor so it benefits from Breakthrough bonuses 
 	Template.Abilities.AddItem('LightKevlarArmorStats');
 	Template.SetUIStatMarkup(class'XLocalizedData'.default.MobilityLabel, eStat_Mobility, class'X2Ability_HeavyAndLightKevlarArmors'.default.LIGHT_KEVLAR_MOBILITY_BONUS, true);

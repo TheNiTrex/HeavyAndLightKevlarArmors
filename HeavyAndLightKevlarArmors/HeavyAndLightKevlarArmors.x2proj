@@ -13,6 +13,7 @@ tags= war of the chosen, item, gameplay, armor</Description>
   <ItemGroup>
     <Folder Include="Config\" />
     <Folder Include="Localization\" />
+    <Folder Include="Content" />
     <Folder Include="Src\" />
     <Folder Include="Src\HeavyAndLightKevlarArmors\" />
     <Folder Include="Src\HeavyAndLightKevlarArmors\Classes\" />
@@ -22,6 +23,9 @@ tags= war of the chosen, item, gameplay, armor</Description>
       <SubType>Content</SubType>
     </Content>
     <Content Include="Config\XComHeavyAndLightKevlarArmors.ini">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Content\UILibrary_HeavyAndLightKevlarArmors.upk">
       <SubType>Content</SubType>
     </Content>
     <Content Include="ReadMe.txt" />

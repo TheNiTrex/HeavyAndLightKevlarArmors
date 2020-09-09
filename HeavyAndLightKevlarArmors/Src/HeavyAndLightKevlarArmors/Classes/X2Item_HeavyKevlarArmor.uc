@@ -19,7 +19,7 @@ static function X2DataTemplate CreateHeavyKevlarArmor() {
 	local X2ArmorTemplate Template;
 
 	`CREATE_X2TEMPLATE(class'X2ArmorTemplate', Template, 'HeavyKevlarArmor');
-	Template.strImage = "img:///UILibrary_StrategyImages.X2InventoryIcons.Inv_Kevlar_Armor";
+	Template.strImage = "img:///UILibrary_TLE_Common.TLE_Inv_Kevlar_Heavy";
 	Template.bAddsUtilitySlot = false;
 	Template.StartingItem = true;
 	Template.CanBeBuilt = false;
